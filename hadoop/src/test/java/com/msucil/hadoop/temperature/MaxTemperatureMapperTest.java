@@ -1,6 +1,5 @@
-package com.msucil.hadoop;
+package com.msucil.hadoop.temperature;
 
-import com.msucil.hadoop.temperature.MaxTemperatureMapper;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
