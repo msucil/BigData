@@ -1,5 +1,6 @@
-package com.msucil.hadoop.wordcount;
+package com.msucil.hadoop.wordcount.v1;
 
+import com.msucil.hadoop.wordcount.WordCountReducer;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
@@ -16,7 +17,7 @@ public class WordCount {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
         if(args.length < 2) {
-            System.err.println("Usage: com.msucil.hadoop.wordcount.WordCount <input path> <output path>");
+            System.err.println("Usage: com.msucil.hadoop.wordcount.v1.WordCount <input path> <output path>");
             System.exit(-1);
         }
 

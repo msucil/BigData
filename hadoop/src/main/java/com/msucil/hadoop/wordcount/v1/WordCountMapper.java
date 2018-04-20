@@ -1,4 +1,4 @@
-package com.msucil.hadoop.wordcount;
+package com.msucil.hadoop.wordcount.v1;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
