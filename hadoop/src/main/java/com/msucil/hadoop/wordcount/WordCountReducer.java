@@ -1,9 +1,9 @@
 package com.msucil.hadoop.wordcount;
 
 import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-import javax.xml.soap.Text;
 import java.io.IOException;
 
 /**
