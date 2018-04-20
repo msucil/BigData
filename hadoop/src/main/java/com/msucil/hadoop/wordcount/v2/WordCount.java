@@ -15,7 +15,7 @@ import java.io.IOException;
 /**
  * Created by msucil on 4/20/18.
  *
- * Usage:  hadoop jar hadoop-examples.jar com.msucil.hadoop.wordcount.v2.WordCount [-DwordCount.ignoreCase=true] [-DwordCount.skipPattern.file=<file path>] <input path> <output path>
+ * Usage: hadoop jar hadoop-examples.jar com.msucil.hadoop.wordcount.v2.WordCount [-DwordCount.ignoreCase=true] [-DwordCount.skipPattern.file=<file path>] <input path> <output path>
 
  */
 public class WordCount {
@@ -25,6 +25,11 @@ public class WordCount {
         GenericOptionsParser optionsParser = new GenericOptionsParser(config, args);
 
         String[] remainingArgs = optionsParser.getRemainingArgs();
+
+        if(remainingArgs.length != 2) {
+            System.err.println("Usage: hadoop jar hadoop-examples.jar com.msucil.hadoop.wordcount.v2.WordCount [-DwordCount.ignoreCase=true] [-DwordCount.skipPattern.file=<file path>] <input path> <output path>");
+            System.exit(-1);
+        }
 
         Job job = new Job(config);
         job.setJarByClass(WordCount.class);
