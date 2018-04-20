@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class MaxTemperature {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
 
         if(args.length != 2) {
             System.err.println("Usage: MaxTemperature <input path> <output path>");
@@ -33,5 +33,7 @@ public class MaxTemperature {
 
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
+
+        System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
 }
