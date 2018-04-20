@@ -1,29 +1,33 @@
 package com.msucil.hadoop.temperature;
 
+import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-
-import java.io.IOException;
+import org.apache.hadoop.util.Tool;
+import org.apache.hadoop.util.ToolRunner;
 
 /**
  * Created by msucil on 4/20/18.
  */
-public class MaxTemperature {
+public class MaxTemperature extends Configured implements Tool {
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+    public static void main(String[] args) throws Exception {
+        System.exit(ToolRunner.run(new MaxTemperature(), args));
+    }
 
+    @Override
+    public int run(String[] args) throws Exception {
         if(args.length != 2) {
             System.err.println("Usage: com.msucil.hadoop.temperature.MaxTemperature <input path> <output path>");
             System.exit(-1);
         }
 
-        Job job = new Job();
+        Job job = new Job(getConf(), "Max Temperature by Year");
         job.setJarByClass(MaxTemperature.class);
-        job.setJobName("Max Temperature");
 
         FileInputFormat.addInputPath(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
@@ -34,6 +38,6 @@ public class MaxTemperature {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
 
-        System.exit(job.waitForCompletion(true) ? 0 : 1);
+        return job.waitForCompletion(true) ? 0 : 1;
     }
 }
