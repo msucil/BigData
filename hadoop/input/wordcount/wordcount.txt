@@ -1,0 +1,3 @@
+Hello Hadoop.
+Practicing hadoop for BigData.
+BigData incorporate processing of large volume of data.
